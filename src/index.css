@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  background: #020617;
+  --page-bg: #020617;
+  --page-text: #f8fafc;
+  --page-muted: #cbd5e1;
+  --page-panel: rgba(15, 23, 42, 0.72);
+}
+
+:root[data-theme='day'] {
+  color-scheme: light;
+  --page-bg: #f8fafc;
+  --page-text: #0f172a;
+  --page-muted: #475569;
+  --page-panel: rgba(255, 255, 255, 0.78);
+}
+
+:root[data-theme='midnight'] {
+  color-scheme: dark;
+}
+
+:root[data-theme='night'] {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: var(--page-bg);
+  color: var(--page-text);
+  background-image:
+    radial-gradient(circle at top, rgba(34, 211, 238, 0.12), transparent 28%),
+    radial-gradient(circle at bottom right, rgba(15, 118, 110, 0.08), transparent 26%),
+    linear-gradient(180deg, #020617 0%, #050b14 55%, #020617 100%);
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+:root[data-theme='day'] body {
+  background-image:
+    radial-gradient(circle at top, rgba(34, 211, 238, 0.08), transparent 30%),
+    linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
+}
+
+:root[data-theme='day'] .glass-panel,
+:root[data-theme='day'] .bg-slate-950\/60,
+:root[data-theme='day'] .bg-slate-950\/45,
+:root[data-theme='day'] .bg-slate-950\/40,
+:root[data-theme='day'] .bg-slate-950\/90,
+:root[data-theme='day'] .bg-slate-950\/92,
+:root[data-theme='day'] .bg-slate-900\/70,
+:root[data-theme='day'] .bg-slate-950,
+:root[data-theme='day'] .bg-slate-900,
+:root[data-theme='day'] .bg-white\/5 {
+  background-color: rgba(255, 255, 255, 0.84) !important;
+  border-color: rgba(15, 23, 42, 0.12) !important;
+}
+
+:root[data-theme='day'] .text-slate-50,
+:root[data-theme='day'] .text-slate-100,
+:root[data-theme='day'] .text-slate-200 {
+  color: #0f172a !important;
+}
+
+:root[data-theme='day'] .text-slate-300,
+:root[data-theme='day'] .text-slate-400,
+:root[data-theme='day'] .text-slate-500 {
+  color: #475569 !important;
+}
+
+:root[data-theme='day'] .border-white\/10,
+:root[data-theme='day'] .border-white\/8,
+:root[data-theme='day'] .border-white\/5 {
+  border-color: rgba(15, 23, 42, 0.12) !important;
+}
+
+:root[data-theme='day'] .bg-white\/5 {
+  background-color: rgba(255, 255, 255, 0.9) !important;
+}
+
+:root[data-theme='day'] .bg-slate-950\/60,
+:root[data-theme='day'] .bg-slate-950\/40,
+:root[data-theme='day'] .bg-slate-950\/45,
+:root[data-theme='day'] .bg-slate-950\/70 {
+  background-color: rgba(255, 255, 255, 0.88) !important;
+}
+
+:root[data-theme='day'] .bg-slate-950\/92,
+:root[data-theme='day'] .bg-slate-950\/90 {
+  background-color: rgba(255, 255, 255, 0.96) !important;
+}
+
+:root[data-theme='day'] .bg-slate-900\/70,
+:root[data-theme='day'] .bg-slate-900 {
+  background-color: rgba(248, 250, 252, 0.92) !important;
+}
+
+:root[data-theme='day'] .shadow-glow,
+:root[data-theme='day'] [class*='shadow-\[0_'] {
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08) !important;
+}
+
+:root[data-theme='midnight'] body {
+  background:
+    radial-gradient(circle at top, rgba(34, 211, 238, 0.16), transparent 28%),
+    radial-gradient(circle at bottom right, rgba(45, 212, 191, 0.1), transparent 24%),
+    linear-gradient(180deg, #020617 0%, #08111d 52%, #020617 100%);
+}
+
+:root[data-theme='night'] body {
+  background:
+    radial-gradient(circle at top, rgba(34, 211, 238, 0.1), transparent 28%),
+    radial-gradient(circle at bottom right, rgba(15, 118, 110, 0.06), transparent 24%),
+    linear-gradient(180deg, #0a1220 0%, #050b14 55%, #020617 100%);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+::selection {
+  background: rgba(34, 211, 238, 0.35);
+  color: #f8fafc;
+}
+
+.glass-panel {
+  @apply border border-white/10 bg-white/[0.03] backdrop-blur-xl;
+}
+
+:root[data-theme='night'] .glass-panel {
+  @apply border-white/10 bg-white/[0.03];
+}
+
+:root[data-theme='midnight'] .glass-panel {
+  @apply border-cyan-300/10 bg-white/[0.035];
+}
+
+.mesh-overlay {
+  background-image:
+    linear-gradient(rgba(148, 163, 184, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.05) 1px, transparent 1px);
+  background-size: 72px 72px;
+}
