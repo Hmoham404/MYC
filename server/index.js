@@ -45,6 +45,12 @@ app.post('/api/ai', async (req, res) => {
       })
     });
 
+    const contentType = response.headers.get('content-type') || '';
+    if (!contentType.includes('application/json')) {
+      const text = await response.text();
+      return res.status(502).json({ error: 'AI provider returned non-JSON response', details: text.slice(0, 1000) });
+    }
+
     const data = await response.json();
 
     if (!response.ok) {

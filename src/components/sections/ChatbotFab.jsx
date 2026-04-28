@@ -31,7 +31,9 @@ export default function ChatbotFab() {
     setLoading(true);
 
     try {
-      const response = await fetch('/api/ai', {
+      const baseUrl = import.meta.env.VITE_API_BASE_URL || '';
+      const url = baseUrl ? `${baseUrl.replace(/\/$/, '')}/api/ai` : '/api/ai';
+      const response = await fetch(url, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -39,6 +41,12 @@ export default function ChatbotFab() {
           messages: nextMessages
         })
       });
+
+      const contentType = response.headers.get('content-type') || '';
+      if (!contentType.includes('application/json')) {
+        const text = await response.text();
+        throw new Error(`Invalid JSON response from proxy: ${text.slice(0, 240)}`);
+      }
 
       const data = await response.json();
       if (!response.ok) {
